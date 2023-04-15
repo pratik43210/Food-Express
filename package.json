@@ -1,0 +1,26 @@
+{
+  "name": "chapter3",
+  "version": "1.0.0",
+  "description": "This is practice code from namaste react live course",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/pratik43210/Namaste-react-course"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

@@ -1,0 +1,30 @@
+body{
+ margin: 0;
+ padding: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.nav-items > ul{
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-items > ul > li{
+    padding: 0 10px;
+}
+
+#title{
+    margin: 0;
+}
+
+#title > img{
+    width: 100px;
+    overflow: hidden;
+}
