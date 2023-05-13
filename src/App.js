@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 //* header is exported by default and {Title} exported by name;
 // import Header, {Title} from "./components/Header";
@@ -14,6 +14,16 @@ import { Footer } from "./components/Footer";
 // * We can also save react code files as file.jsx
 // * Ex: Header.js can be written as Header.jsx to 
 // * indicate that file has React code
+import About, {AboutUs} from "./components/About";
+import Error from "./components/Error";
+import Contact from "./components/Contact";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Profile from "./components/Profile";
+// import Profile from "./components/ProfileClass";
+import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
+import { Shimmer } from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
+// import Instamart from "./components/Instamart";
 
 //JSX=>React.createElement=>Object=>HTML(Rendered in React DOM)
 //below is a react element
@@ -97,17 +107,84 @@ import { Footer } from "./components/Footer";
 // we can put hard coded stuff in config.js or constants.js file
 // const imgUrl="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
+/**Chunking
+ * Code Splitting
+ * Dynaic Binding
+ * Lazy Loading
+ * On Demand Loading
+ * Dynamic Import
+ */
+
+const Instamart=lazy(()=>import("./components/Instamart"));
+
 const AppLayout=()=>{
+    const [user, setUser]=useState({
+        name:"Pratik",
+        email:"pratik@abc.com",
+    });
+
     return (
         //<React.Fragment can be replaced by empty tag <></>
-        <>
+        // context is only modified for those components
+        // which are wrapped in <UserContext.Provider>
+        <UserContext.Provider value={{
+            user:user,
+            setUser:setUser,
+        }}>
             {/* {Obj.Title()} */}
             <Header/>
-            <Body/>
+            {/* <About/> // if path is /about */}
+            {/* <Body/> //if path is / */}
+            <Outlet/>
             <Footer/>
-        </>
+        </UserContext.Provider>
     );
 };
+
+const appRouter= createBrowserRouter([
+    {
+        path:"/",
+        element:<AppLayout/>,
+        errorElement:<Error/>,
+        children:[
+            {
+                path:"/",
+                element:<Body/>,
+            },
+            {
+                path:"/about",
+                element:<About/>,
+                children:[
+                    {
+                        path:"",
+                        element:<AboutUs/>,
+                    },
+                    {
+                        path:"profile",
+                        element:<Profile/>,
+                    },
+                ],
+            },
+            {
+                path:"/contact",
+                element:<Contact/>,
+            },
+            {
+                path:"instamart",
+                element:(
+                    <Suspense fallback={<Shimmer/>}>
+                        <Instamart/>
+                    </Suspense>
+                ),
+            },
+            {
+                path:"/restaurant/:resId",
+                element:<RestaurantMenu/>,
+            },
+        ],
+    },
+]);
+
 const styleObj={
     backgroundColor: "red",
     // textAlign: "center",
@@ -129,6 +206,6 @@ const root=ReactDOM.createRoot(document.getElementById ("root"));
 
 // root.render(heading);
 // to render functional component use:
-root.render(<AppLayout/>);
+root.render(<RouterProvider router={appRouter}/>);
 
-console.log("Hello");
+// console.log("Hello");

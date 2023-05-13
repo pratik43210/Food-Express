@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "This is practice code from namaste react live course",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html",
     "test": "jest"
   },
   "repository": {
@@ -17,7 +17,9 @@
     "@babel/core": "^7.21.4",
     "constants-browserify": "^1.0.0",
     "parcel": "^2.8.3",
-    "process": "^0.11.10"
+    "postcss": "^8.4.23",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.2"
   },
   "dependencies": {
     "babel-plugin-transform-remove-console": "^6.9.4",

@@ -1,3 +1,24 @@
+/**Ways of styling our website:
+ Normal Native CSS
+    SCSS (sass)
+    Inline CSS
+    Styled Component
+    Component libraries- Material UI, Base UI, Ant, Chakra
+    Bootstrap
+
+    Tailwind CSS- It is an opensource css framework. Advantages:
+                CSS on the go (In the same file we can write html and css)
+                Reusability
+                Less bundle size (offers minimal css which we can style)
+                Flexible UI (It is very much customizable)
+                
+ */
+
+
+
+
+
+
 body{
  margin: 0;
  padding: 0;
@@ -30,7 +51,9 @@ body{
 }
 
 #title > img{
-    width: 150px;
+    width: 100px;
+    height: 60px;
+    margin: 10PX;
     overflow: hidden;
 }
 
@@ -55,6 +78,10 @@ body{
 .restaurant-list{
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+}
+
+.restaurant-list > Link{
     width: 100%;
 }
 
@@ -106,4 +133,86 @@ body{
 
 .s-rating{
     height: 20px;
+}
+
+.menu{
+    display: flex;
+}
+
+.link{
+    text-decoration: none;
+    color: rgb(191, 220, 247);
+}
+
+.footer{
+    background-color: rgb(2, 2, 10);
+}
+
+.menu-items{
+    margin-right: 10px;
+    padding: 5px 40px;
+    background-color:  rgb(165, 165, 246);
+    border-radius: 0 10px 10px 0;
+    color: black;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.menu-items > h1{
+    margin-left: 25px;
+}
+
+.profile-img{
+    height: 200px;
+    width: 200px;
+}
+
+.search-container{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px 0 0 5px;
+}
+
+.clear-filter{
+    background-color: rgb(93, 214, 93);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.search-results{
+    margin: 10px;
+}
+
+.brand{
+    display: flex;
+    width: 35%;
+}
+
+.res-img{
+    max-width:30vw;
+    /* flex-grow: 1; */
+    min-width: 200px;
+}
+
+.res-info{
+    background-color: rgb(39, 39, 84);
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+    margin-left: 10px;
+}
+
+.search-input{
+    border-radius: 10px 0 0 10px;
+    border: none;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.search-btn{
+    border: none;
+    font-size: 16px;
+    border-radius: 0 10px 10px 0;
+    background-color: rgb(67, 67, 132);
+    color: aliceblue;
 }
