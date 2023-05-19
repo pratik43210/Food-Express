@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 // Logo comes as default export
 import Logo from "../assets/img/food-logo.png"
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 // import UserContext from "../utils/UserContext";
 // import useOnline from "../utils/useOnline";
 
@@ -30,6 +32,8 @@ export const Header= ()=>{
     // },[]);
     // const isOnline=useOnline();
 
+    const cartItems=useSelector(store => store.cart.items);
+
     // const {user}=useContext(UserContext);
     return(
     <div className="header min-w-[300px] flex justify-between items-center bg-pink-100 sticky top-0 shadow-md p-2">
@@ -57,7 +61,7 @@ export const Header= ()=>{
             <li className=" hover:bg-red-100 p-1 rounded-md"><Link to="/about" className="link">About</Link></li>
             <li className=" hover:bg-red-100 p-1 rounded-md"><Link to="/contact" className="link">Contact</Link></li>
             <li className=" hover:bg-red-100 p-1 rounded-md"><Link to="/instamart" className="link">Instamart</Link></li>
-            <li className=" hover:bg-red-100 rounded-md cursor-pointer p-1">Cart</li>
+            <li className=" hover:bg-red-100 rounded-md p-1"><Link to="/cart" className="link">Cart {cartItems.length}</Link></li>
             </ul>
 
             {/* {only accepts javascript expression not statement

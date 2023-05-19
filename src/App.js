@@ -20,9 +20,14 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 // import Profile from "./components/ProfileClass";
+
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import { Shimmer } from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import {Provider} from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
+
 // import Instamart from "./components/Instamart";
 
 //JSX=>React.createElement=>Object=>HTML(Rendered in React DOM)
@@ -127,17 +132,19 @@ const AppLayout=()=>{
         //<React.Fragment can be replaced by empty tag <></>
         // context is only modified for those components
         // which are wrapped in <UserContext.Provider>
-        <UserContext.Provider value={{
-            user:user,
-            setUser:setUser,
-        }}>
-            {/* {Obj.Title()} */}
-            <Header/>
-            {/* <About/> // if path is /about */}
-            {/* <Body/> //if path is / */}
-            <Outlet/>
-            <Footer/>
-        </UserContext.Provider>
+        <Provider store={store}>
+            <UserContext.Provider value={{
+                user:user,
+                setUser:setUser,
+            }}>
+                {/* {Obj.Title()} */}
+                <Header/>
+                {/* <About/> // if path is /about */}
+                {/* <Body/> //if path is / */}
+                <Outlet/>
+                <Footer/>
+            </UserContext.Provider>
+        </Provider>
     );
 };
 
@@ -180,6 +187,10 @@ const appRouter= createBrowserRouter([
             {
                 path:"/restaurant/:resId",
                 element:<RestaurantMenu/>,
+            },
+            {
+                path:"/cart",
+                element: <Cart/>
             },
         ],
     },
