@@ -3,3 +3,5 @@ dist
 .parcel-cache
 src/components/ProfileClass.js
 style.css
+
+/coverage
