@@ -54,9 +54,9 @@ const RestaurantMenu=()=>{
             <h1 className="text-2xl font-semibold">Menu</h1>
             <ul className="list-disc pl-4">{
                 (!Array.isArray(menu))?<Error/>:menu.map(item=><li key={item.card.info.id} >{item.card.info.name} 
-                <button className="text-sm px-2 bg-red-50 rounded hover:bg-red-400 hover:text-white"
+                <button className=" text-center text-sm ml-2 w-[22px] h-[20px] bg-red-50 rounded-full hover:bg-red-400 hover:text-white"
                     onClick={()=>handleAdditem(item.card.info)}
-                >add item</button>
+                >+</button>
                 </li>)
             }</ul>
         </div>
