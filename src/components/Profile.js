@@ -26,7 +26,7 @@ const Profile=(props)=>{
 
 
     return (
-        <div className=" bg-pink-50 p-2 ">
+        <div className=" bg-orange-100 p-2 ">
             <h2 className=" font-semibold text-3xl mb-4">Profile</h2>
             <img src={userInfo?.avatar_url} className="profile-img w-48 rounded"/>
             <h3 className="text-xl">Name : {userInfo?.name}</h3>

@@ -40,8 +40,8 @@ const RestaurantMenu=()=>{
     }
 
     return(!restaurant)?<Shimmer/>: (
-        <div className="menu bg-pink-50 py-2 flex flex-row">
-        <div className="res-info  text-xl ml-1 bg-red-200 p-2 rounded-l-2xl">
+        <div className="menu bg-[rgba(255,104,54,0.76)] py-2 flex flex-row">
+        <div className="res-info  text-xl ml-1 bg-yellow-100 p-2 rounded-l-2xl">
             {/* <h1>Restaurant id:{resId}</h1> */}
             <h2 className=" font-semibold text-3xl mb-4">{restaurant.name}</h2>
             <img src={imgUrl+restaurant.cloudinaryImageId} className="res-img w-[60%] mb-2"/>
@@ -50,11 +50,11 @@ const RestaurantMenu=()=>{
             <h3>Rating: {restaurant.avgRating}⭐</h3>
             <h3>Price: {restaurant.costForTwoMessage}</h3>
         </div>
-        <div className="menu-items  text-md font-medium mr-1 bg-red-100 p-2 rounded-r-2xl grow">
+        <div className="menu-items  text-md font-medium mr-1 bg-orange-200 p-2 rounded-r-2xl grow">
             <h1 className="text-2xl font-semibold">Menu</h1>
             <ul className="list-disc pl-4">{
                 (!Array.isArray(menu))?<Error/>:menu.map(item=><li key={item.card.info.id} >{item.card.info.name} 
-                <button className=" text-center text-sm ml-2 w-[22px] h-[20px] bg-red-50 rounded-full hover:bg-red-400 hover:text-white"
+                <button className=" text-center text-sm ml-2 w-[22px] h-[20px] bg-orange-50 rounded-full hover:bg-red-500 hover:text-white"
                     onClick={()=>handleAdditem(item.card.info)}
                 >+</button>
                 </li>)

@@ -6,7 +6,7 @@ import { Link, Outlet} from "react-router-dom";
 
 export const AboutUs=()=>{
     return(
-        <div className=" bg-pink-50 p-2">
+        <div className=" bg-orange-100 p-2">
             <h1 className=" font-semibold text-3xl mb-4">About us Page</h1>
             <p className="text-xl mb-4">
             {" "}

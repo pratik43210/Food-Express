@@ -36,7 +36,7 @@ export const Header= ()=>{
 
     // const {user}=useContext(UserContext);
     return(
-    <div className="header min-w-[300px] flex justify-between items-center bg-pink-100 sticky top-0 shadow-md p-2">
+    <div className="header min-w-[300px] flex justify-between items-center bg-red-500 text-white sticky top-0 shadow-md p-2">
         {/* {Title()} (comments in jsx are written in parenthesis)*/}
         <div className="brand flex">
         <Title/>
@@ -57,11 +57,11 @@ export const Header= ()=>{
         }>Change Title</button> */}
         <div className="nav-items sm:text-base  text-[3vw] grow-[0.4]">
             <ul className="flex grow-1 justify-around">
-            <li className=" hover:bg-red-100 p-1 rounded-md"><Link to="/" className="link">Home</Link></li>
-            <li className=" hover:bg-red-100 p-1 rounded-md"><Link to="/about" className="link">About</Link></li>
-            <li className=" hover:bg-red-100 p-1 rounded-md"><Link to="/contact" className="link">Contact</Link></li>
-            <li className=" hover:bg-red-100 p-1 rounded-md"><Link to="/instamart" className="link">Instamart</Link></li>
-            <li className=" hover:bg-red-100 rounded-md p-1"><Link to="/cart" className="link">Cart {cartItems.length}</Link></li>
+            <li className=" hover:bg-red-600 p-1 rounded-md"><Link to="/" className="link">Home</Link></li>
+            <li className=" hover:bg-red-600 p-1 rounded-md"><Link to="/about" className="link">About</Link></li>
+            <li className=" hover:bg-red-600 p-1 rounded-md"><Link to="/contact" className="link">Contact</Link></li>
+            <li className=" hover:bg-red-600 p-1 rounded-md"><Link to="/instamart" className="link">Instamart</Link></li>
+            <li className=" hover:bg-red-600 rounded-md p-1"><Link to="/cart" className="link">Cart {cartItems.length}</Link></li>
             </ul>
 
             {/* {only accepts javascript expression not statement
@@ -72,7 +72,7 @@ export const Header= ()=>{
         </div>
         {/* <h1 className="text-xs">{isOnline? "🟢" : "🔴"}</h1>
         {user.name} */}
-        {isLoggedIn?<button className="shadow-md sm:text-base text-[2.8vw] sm:w-16 bg-red-300 p-1 rounded-md mr-2 hover:bg-red-400  hover:text-white" onClick={()=>setIsLoggedIn(false)}>logout</button>:<button className="shadow-md sm:text-base text-[2.8vw] bg-red-300 p-1 rounded-md sm:w-16 mr-2 hover:bg-red-400 hover:text-white" onClick={()=>setIsLoggedIn(true)}>login</button>}
+        {isLoggedIn?<button className="shadow-md sm:text-base text-[2.8vw] sm:w-16 hover:bg-orange-500 p-1 rounded-md mr-2 bg-red-600  hover:text-white" onClick={()=>setIsLoggedIn(false)}>logout</button>:<button className="shadow-md sm:text-base text-[2.8vw] hover:bg-orange-500 p-1 rounded-md sm:w-16 mr-2 bg-red-600 hover:text-white" onClick={()=>setIsLoggedIn(true)}>login</button>}
     </div>
     );
 };

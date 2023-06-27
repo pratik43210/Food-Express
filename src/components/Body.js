@@ -47,12 +47,12 @@ export const Body=()=>{
     // return <h1>No restaurant matches your filter!!</h1>
 
     return (allRestaurants.length==0)?<Shimmerlist/>: (
-    <div className="bg-pink-50">
+    <div className="bg-yellow-50">
         <div className="search-container flex justify-between p-2">
             <div>
                 <input 
                     type="text"
-                    className="search-input pl-2 bg-red-100 rounded-l w-28"
+                    className="search-input pl-2 bg-[rgba(255,111,0,0.36)] rounded-l w-28"
                     placeholder="search"
                     value={searchText}
                     onChange={(e)=>{
@@ -63,7 +63,7 @@ export const Body=()=>{
                 />
                 {/* <h1>{searchClicked}</h1> */}
                 <button
-                className="search-btn px-2 bg-red-200 rounded-r hover:bg-red-400 hover:text-white"
+                className="search-btn px-2 hover:bg-red-600 rounded-r bg-[rgb(255,36,16)] text-white"
                 onClick={()=>{
                     // if(searchClicked=="false"){
                     //     setSearchClicked("true")
@@ -82,7 +82,7 @@ export const Body=()=>{
             </div>
             
 
-            <button className="clear-filter bg-red-200 rounded-md px-2 hover:bg-red-400 hover:text-white" onClick={()=>{
+            <button className="clear-filter bg-[rgb(255,36,16)] text-white rounded-md px-2 hover:bg-red-600 hover:text-white" onClick={()=>{
                 setFilteredRestaurants(allRestaurants);
                 setSearchText("");
                 setResult("");

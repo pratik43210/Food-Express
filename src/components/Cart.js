@@ -28,10 +28,10 @@ const Cart=()=>{
     }
 
     return(
-        <div className="bg-pink-50 p-2">
+        <div className="bg-orange-100 p-2">
             <div className="flex justify-between">
-                <button className="px-2 bg-red-200 rounded-full hover:bg-red-400 hover:text-white" onClick={()=>handleClearCart()}>Clear</button>
-                <button className="px-2 text-sm bg-red-200 rounded-full hover:bg-red-400 hover:text-white" onClick={()=>handleRemoveItem()}>Remove</button>
+                <button className="px-2 bg-[#f81105e6] rounded-full hover:bg-red-600 text-white" onClick={()=>handleClearCart()}>Clear</button>
+                <button className="px-2 text-sm bg-[#f81105e6] rounded-full hover:bg-red-600 text-white" onClick={()=>handleRemoveItem()}>Remove</button>
             </div>
             <h1 className=" font-semibold text-3xl mb-4">Cart Items:</h1>
             <div className="flex flex-wrap">{
@@ -52,7 +52,7 @@ const Cart=()=>{
             }</ul> */}
             {console.log(cartItems)}
             <h3 className="font-bold m-2 text-lg">Total: Rs. {t.toFixed(2)}</h3>
-            <button className="px-2 bg-red-200 rounded hover:bg-red-400 hover:text-white">Place order</button>
+            <button className="px-2 bg-[#f81105e6] text-white rounded hover:bg-red-600 hover:text-white">Place order</button>
         </div>
     )
 }
