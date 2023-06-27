@@ -5,7 +5,7 @@ import { useState } from "react";
 const Section=({title,description, isVisible, setIsVisible, hide})=>{
     // const [isVisible,setIsVisible]=useState(false);
     return (
-        <div className="bg-red-100 my-2">
+        <div className="bg-[#fd1c039a] my-2">
         <h3 className="font-bold text-xl">{title}</h3>
         {isVisible? <><button className="underline text-xs" onClick={()=>{
             hide();
@@ -29,7 +29,7 @@ const Instamart=()=>{
     const[visibleSection,setVisibleSection]=useState("about");
 
     return(
-        <div className=" bg-pink-50 p-2">
+        <div className=" bg-orange-100 p-2">
             <h2 className=" font-semibold text-3xl mb-4">Instamart</h2>
             <h2 className="text-xl">Welcome to Instamart 🛒</h2>
             <h3 className="text-xl mb-4">More content coming soon!</h3>
