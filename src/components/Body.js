@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 // import { restaurantList } from "../constants";
 import { RestaurantCard } from "./RestaurantCard";
-import { useState } from "react";
 import { Shimmerlist } from "./Shimmer";
 import { Link } from "react-router-dom";
 import {filterData} from "../utils/helper";
@@ -30,8 +29,8 @@ export const Body=()=>{
         const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&page_type=DESKTOP_WEB_LISTING");
         const json=await data.json();
         // console.log(json);
-        setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-        setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+        setAllRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
     const online=useOnline();
@@ -96,7 +95,7 @@ export const Body=()=>{
             // no key<<<<index key(ok way)< unique key
             filteredRestaurants.map(restaurant=>{
                 return (
-                    <Link to={"/restaurant/"+restaurant.data.id} className="card link min-w-[160px] w-[18%] h-[100%] grow m-2"  key={restaurant.data.id}><RestaurantCard {...restaurant.data}/></Link>
+                    <Link to={"/restaurant/"+restaurant.info.id} className="card link min-w-[160px] w-[18%] h-[100%] grow m-2"  key={restaurant.info.id}><RestaurantCard {...restaurant.info}/></Link>
                 );
             })
         }
