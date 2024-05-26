@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import { restaurantList } from "../constants";
 import { RestaurantCard } from "./RestaurantCard";
 import { Shimmerlist } from "./Shimmer";
-import { Link } from "react-router-dom";
+import { Link, resolvePath } from "react-router-dom";
 import {filterData} from "../utils/helper";
 import useOnline from "../utils/useOnline";
 
@@ -22,15 +22,36 @@ export const Body=()=>{
     // const [searchClicked, setSearchClicked]=useState("false");
 
     useEffect(()=>{
-        getRestaurant();
+        let lat,lng;
+        getGeolocation().then(pos=>{
+            lat=pos.coords.latitude;
+            lng=pos.coords.longitude;
+            // console.log(lat,lng);
+        }).then(()=>getRestaurant(lat,lng));
+        // getRestaurant(lat,lng);
     }, []);
 
-    async function getRestaurant(){
-        const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&page_type=DESKTOP_WEB_LISTING");
+    const getGeolocation=()=>{
+        return new Promise((resolve,reject)=>{
+            navigator.geolocation.getCurrentPosition(resolve,reject);
+        })
+    }
+
+    async function getRestaurant(lat,lng){
+        const data=await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`);
         const json=await data.json();
-        // console.log(json);
-        setAllRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(json);
+
+        const paths = json?.data?.cards;
+        const cards = json?.data?.cards;
+        let restaurants=[];
+
+        restaurants=cards.find(card=>card?.card?.card?.gridElements?.infoWithStyle?.restaurants)?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+        console.log(restaurants);
+
+        setAllRestaurants(restaurants);
+        setFilteredRestaurants(restaurants);
     }
 
     const online=useOnline();
@@ -44,7 +65,7 @@ export const Body=()=>{
 
     // if(filteredRestaurants.length==0)
     // return <h1>No restaurant matches your filter!!</h1>
-
+console.log(allRestaurants);
     return (allRestaurants.length==0)?<Shimmerlist/>: (
     <div className="bg-yellow-50">
         <div className="search-container flex justify-between p-2">

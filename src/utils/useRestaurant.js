@@ -13,11 +13,19 @@ const useRestaurant=(resId)=>{
     const getRestaurantInfo=async ()=>{
         const data= await fetch(resMenuUrl+resId+"&submitAction=ENTER");
         const json= await data.json();
-        
-        setRestaurantInfo(json?.data?.cards[0]?.card?.card?.info);
-        const n=json?.data?.cards?.length;
 
-        setMenuInfo(json?.data?.cards[n-1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+        const cards = json?.data?.cards;
+
+        // Find restaurant info
+        const resInfo = cards?.find(card => card?.card?.card?.info)?.card?.card?.info;
+        setRestaurantInfo(resInfo);
+
+        const menuCards = cards?.find(card => card?.groupedCard?.cardGroupMap?.REGULAR?.cards)?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+        const menuItems = menuCards?.find(menuCard => menuCard?.card?.card?.itemCards)?.card?.card?.itemCards;
+        
+        if(menuCards?.find(menuCard => menuCard?.card?.card?.itemCards))
+
+        setMenuInfo(menuItems);
     }
 
     const resObj={restaurant:restaurantInfo,menu:menuInfo};

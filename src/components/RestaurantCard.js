@@ -8,10 +8,10 @@ export const RestaurantCard=(
     avgRating}
 )=>{
     return (
-        <div className="p-2 bg-orange-200 rounded-lg flex flex-col justify-between min-h-[350px] shadow-lg">
+        <div className="p-2 bg-orange-200 rounded-lg flex flex-col justify-between min-h-[450px] shadow-lg">
             {/* <img src={imgUrl+props.restaurant.data.data?.cloudinaryImageId}/> */}
             <div>
-                <img className=" w-auto" src={imgUrl+cloudinaryImageId}/>
+                <img className=" w-full object-cover h-[280px]" src={imgUrl+cloudinaryImageId}/>
                 <h2 className="font-bold">{name}</h2>
                 <h3 className="pb-2">{cuisines.join(", ")}</h3>
             </div>

@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 const RestaurantMenu=()=>{
     // const {id}=useParams();
     const {resId}=useParams();
-    
 
     const {restaurant,menu}=useRestaurant(resId);
 
