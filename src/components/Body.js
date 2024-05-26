@@ -26,9 +26,7 @@ export const Body=()=>{
         getGeolocation().then(pos=>{
             lat=pos.coords.latitude;
             lng=pos.coords.longitude;
-            // console.log(lat,lng);
         }).then(()=>getRestaurant(lat,lng));
-        // getRestaurant(lat,lng);
     }, []);
 
     const getGeolocation=()=>{
@@ -40,15 +38,12 @@ export const Body=()=>{
     async function getRestaurant(lat,lng){
         const data=await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`);
         const json=await data.json();
-        console.log(json);
 
         const paths = json?.data?.cards;
         const cards = json?.data?.cards;
         let restaurants=[];
 
         restaurants=cards.find(card=>card?.card?.card?.gridElements?.infoWithStyle?.restaurants)?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
-        console.log(restaurants);
 
         setAllRestaurants(restaurants);
         setFilteredRestaurants(restaurants);
@@ -65,7 +60,6 @@ export const Body=()=>{
 
     // if(filteredRestaurants.length==0)
     // return <h1>No restaurant matches your filter!!</h1>
-console.log(allRestaurants);
     return (allRestaurants.length==0)?<Shimmerlist/>: (
     <div className="bg-yellow-50">
         <div className="search-container flex justify-between p-2">
