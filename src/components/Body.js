@@ -36,9 +36,9 @@ export const Body=()=>{
     }
 
     async function getRestaurant(lat,lng){
-        const data=await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`);
+        const data=await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&page_type=DESKTOP_WEB_LISTING&page=5`);
         const json=await data.json();
-
+        console.log(json)
         const paths = json?.data?.cards;
         const cards = json?.data?.cards;
         let restaurants=[];

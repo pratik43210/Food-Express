@@ -31,7 +31,7 @@ export const Shimmerlist=()=>{
             <button className="clear-filter bg-orange-200 text-gray-800 rounded-md px-2 hover:bg-red-400 hover:text-white">Clear Filter</button>
         </div>
         <div className="restaurant-list flex flex-wrap">
-            {a.map((val,index)=>{return <div className="min-w-[160px] w-[18%] h-[100%] grow m-2"><Shimmer key={index}/></div>})}
+            {a.map((val,index)=>{return <div className="min-w-[160px] w-[18%] h-[100%] grow m-2" key={index}><Shimmer key={index}/></div>})}
     </div>
     </>)
 }
